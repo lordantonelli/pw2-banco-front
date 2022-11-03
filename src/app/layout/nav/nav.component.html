@@ -1,0 +1,22 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    class="sidenav"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="64"
+  >
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/">
+        <i class="material-icons">home</i>
+        Home
+      </a>
+      <a mat-list-item routerLink="/cities">Cidades</a>
+      <a mat-list-item routerLink="/states">Estados</a>
+      <a mat-list-item routerLink="/bank-branches">Agências bancárias</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
