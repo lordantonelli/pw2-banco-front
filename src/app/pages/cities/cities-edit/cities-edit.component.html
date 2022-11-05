@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-title>Atualizar cidade</mat-card-title>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        name="name"
+        placeholder="Nome da cidade"
+        formControlName="name"
+      />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estado</mat-label>
+      <mat-select
+        name="state"
+        formControlName="state"
+        [compareWith]="compareStates"
+      >
+        <mat-option *ngFor="let state of states" [value]="state">
+          {{ state.acronym }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('state')?.hasError('required')">
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button (click)="save()" color="primary">Atualizar</button>
+
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

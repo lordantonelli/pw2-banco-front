@@ -1,0 +1,40 @@
+.container-table {
+  margin-top: 2rem;
+  position: relative;
+
+  table {
+    width: 100%;
+  }
+
+  .loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    background-color: rgba($color: #000000, $alpha: 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-column-id, .mat-column-state {
+    max-width: 64px;
+  }
+
+  .edit {
+    color: #d9cd26;
+    margin: 0 5px;
+  }
+
+  .delete {
+    color: #e35e6b;
+    margin: 0 5px;
+  }
+
+  .search-input {
+    margin: 1rem 1rem 0;
+    width: calc(100% - 2rem);
+  }
+}

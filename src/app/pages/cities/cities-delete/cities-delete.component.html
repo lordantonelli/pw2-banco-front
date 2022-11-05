@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Exclusão de cidade</h1>
+<div mat-dialog-content>
+  Tem certeza que deseja excluir a cidade "{{ data.name }}"?
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Não</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">
+    Sim
+  </button>
+</div>
