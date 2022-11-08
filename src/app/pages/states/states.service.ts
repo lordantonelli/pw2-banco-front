@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { ResponseDataList } from 'src/app/models/shared';
+import { ResponseDataList } from 'src/app/models/shared.model';
 import { State } from 'src/app/models/state.model';
 
 import { environment } from './../../../environments/environment';
