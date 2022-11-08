@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,14 +20,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RedDirective } from './directives/red.directive';
+import { JsonDateInterceptor } from './interceptors/json-date.interceptor';
+import { JwtAuthInterceptor } from './interceptors/jwt-auth.interceptor';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { NavComponent } from './layout/nav/nav.component';
+import { PageComponent } from './layout/page/page.component';
 import { CitiesCreateComponent } from './pages/cities/cities-create/cities-create.component';
 import { CitiesDeleteComponent } from './pages/cities/cities-delete/cities-delete.component';
 import { CitiesEditComponent } from './pages/cities/cities-edit/cities-edit.component';
 import { CitiesListComponent } from './pages/cities/cities-list/cities-list.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { HomeComponent } from './pages/home/home.component';
     CitiesCreateComponent,
     CitiesEditComponent,
     CitiesDeleteComponent,
+    PageComponent,
+    LoginComponent,
   ],
   imports: [
     MatDialogModule,
@@ -62,7 +68,11 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JsonDateInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
